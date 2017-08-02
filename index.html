@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
+
+
+    <title>Number Guesser</title>
+  </head>
+
+  <body>
+    <header>
+      <h1><span id="number">Number</span> <span id="guesser">Guesser</span></h1>
+    </header>
+
+  <!-- user input and buttons -->
+    <section>
+      <input type="number" placeholder="Enter a guess (between 1-100)" id="guess-input" />
+      <div>
+        <br />
+        <input type="submit" value="Guess" class="button" id="guess-button" disabled />
+        <input type="submit" value="Clear" class="button" id="clear-button" disabled />
+    </div>
+  </section>
+
+  <!-- Feedback and reset -->
+    <section>
+      <h2 id="your-last-guess">Game on!</h2>
+        <p id="last-number">I'm thinking of a number...</p>
+        <p id="feedback">Take a guess!</p>
+        <input type="submit" value="Reset" class="button" id="reset-button" disabled />
+    </section>
+
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
