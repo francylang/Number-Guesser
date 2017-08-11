@@ -23,27 +23,24 @@ guessButton.addEventListener('click', evaluateUserInput);
 clearButton.addEventListener('click', clear);
 guessInput.addEventListener('keyup', buttonOn);
 resetButton.addEventListener('click', restart);
-// userMin.addEventListener('keyup', enableUserRange)
-
-
-function nextNum() {
-  var min = parseInt(userMin.value);
-  var max = parseInt(userMax.value);
-  return Math.floor(Math.random() * (max - min + 1) + min);
-  console.log(randomNumber);
-}
+// guessInput.addEventListener('keyup', enableUserRange)
 
 window.onload = function(e) {
   e.preventDefault();
 }
 
-// GENERATE RANDOM NUMBER
-function generateRandomNumber() {
+function nextNum() {
   var min = parseInt(userMin.value);
   var max = parseInt(userMax.value);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// GENERATE RANDOM NUMBER
+function generateRandomNumber() {
   if (!randomNumber) {
     randomNumber = nextNum();
-    console.log(randomNumber)
+    console.log(randomNumber);
+
   }
 }
 
@@ -79,10 +76,14 @@ function guessFeedback() {
       feedback.innerText = 'That is too low';
   } else if (guess === randomNumber) {
       feedback.innerText = 'BOOM!';
-  } else {
-    lastGuess.innerText = '';
-    feedback.innerText = '...please enter a number';
-  }
+      adjustMinMax()
+      correctGuess()
+ }
+}
+
+function correctGuess() {
+  lastGuess.innerText = 'Time for another challenge!'
+  feedback.innerText = 'You min will decrease by 10 and your max will increase by 10'
 }
 // EVALUATE INITIAL INPUT
 function evaluateUserInput() {
@@ -93,4 +94,11 @@ function evaluateUserInput() {
     lastGuess.innerText = 'whoops...';
     feedback.innerText = 'Choose a number between ' + min + ' and ' + max + ' .';
  }
+}
+
+function adjustMinMax() {
+  var min = parseInt(userMin.value);
+  var max = parseInt(userMax.value);
+  userMin.value = min - 10;
+  userMax.value = max + 10;
 }
