@@ -33,6 +33,16 @@ h1 {
   font-weight: 300;
 }
 
+.intro {
+  font-size: 25px;
+  text-align: center;
+  display: block;
+  width: 30%;
+  margin: auto;
+  margin-bottom: 15px;
+
+}
+
 .main,
 .feedback {
   margin: 40px;
@@ -40,6 +50,10 @@ h1 {
   width: 100%;
   text-align: center;
   margin: 20px;
+}
+
+.main {
+  margin-top: 0;
 }
 
 .setNumRange {
@@ -76,6 +90,13 @@ h1 {
 #user-min,
 #user-max {
   margin-top: 0;
+}
+
+#user-min:disabled,
+#user-max:disabled {
+  background-color: #929497;
+  color: #E6E7E8;
+
 }
 
 .button {
@@ -126,6 +147,12 @@ h2 {
 #last-number {
   color: #EB008B;
   font-size: 150px;
+}
+
+#boom {
+  color: #EB008B;
+  font-size: 50px;
+
 }
 
 #feedback {
