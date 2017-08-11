@@ -14,12 +14,13 @@ body {
 header {
   background-color: #404041;
   text-align: center;
-  padding: 10px 0px 10px 0px;
+  padding: 10px 0px 10px 50px;
+  margin-bottom: 20px;
 }
 
 h1 {
-  font-size: 75px;
-  text-align: center;
+  font-size: 50px;
+  letter-spacing: 1.5px;
 }
 
 #number {
@@ -32,7 +33,8 @@ h1 {
   font-weight: 300;
 }
 
-section {
+.main,
+.feedback {
   margin: 40px;
   display: inline-block;
   width: 100%;
@@ -40,8 +42,19 @@ section {
   margin: 20px;
 }
 
-#guess-input {
-  width: 450px;
+.setNumRange {
+  width: 50%;
+  align-items: center;
+  display: inline-block;
+}
+
+
+
+.input-field,
+.user-input,
+.button {
+  width: 200px;
+  display: inline-block;
   color: #404041;
   border: 2px solid #E6E7E8;
   font-size: 25px;
@@ -50,22 +63,39 @@ section {
   padding: 5px;
 }
 
+.input-field:focus {
+  outline-color: #ed458b;
+  outline-style: auto;
+}
+
+#user-input {
+  width: 405px;
+  height: 50px;
+}
+
+#user-min,
+#user-max {
+  margin-top: 0;
+}
+
 .button {
   color: #FFFFFF;
   background-color: #929497;
   border-radius: 25px;
   text-align: center;
-  display: inline-block;
-  font-size: 30px;
-  width: 200px;
-  padding: 5px 0px 5px 0px;
-  margin: 20px;
   text-decoration: none;
   border: none;
+  margin-top: 0;
+  width: 190px
 }
 
+#guess-button {
+  margin-right: 5px;
+}
 
-/*does each button need to have it's own id?*/
+#clear-button {
+  margin-left: 5px;
+}
 
 .button:disabled {
   background-color: #D0D2D3;
@@ -75,27 +105,35 @@ section {
   background-color: #EB008B;
 }
 
+.feedback {
+  margin-top: 0;
+}
+
 h2 {
   color: #404041;
   font-weight: 300;
   margin: 20px;
-  font-size: 50px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 30px;
+  letter-spacing: 1.5px;
 }
 
 #reset-button {
-  width: 450px;
+  width: 405px;
 }
 
 #last-number {
   color: #EB008B;
-  font-size: 100px;
+  font-size: 150px;
 }
 
 #feedback {
   color: #404041;
   font-weight: 300;
   margin: 20px;
-  font-size: 50px;
+  margin-top: 0;
+  font-size: 30px;
 }
 
 #instruction-paragraph {
