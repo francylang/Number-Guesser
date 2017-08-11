@@ -1,61 +1,77 @@
+// INPUT VARIABLES
+var guessInput = document.getElementById('user-input');
 
-// input variables
-var guessInput = document.getElementById('guess-input');
-
-// button variables
+// BUTTON VARIABLES
 var guessButton = document.getElementById('guess-button');
 var clearButton = document.getElementById('clear-button');
 var resetButton = document.getElementById('reset-button');
 
-// variables
-var numLow = 1;
-var numHigh = 100;
+// VARIABLES
+var randomNumber;
+var userMin = document.getElementById('user-min');
+var userMax = document.getElementById('user-max');
 var lastNumber = document.getElementById('last-number');
 var lastGuess = document.getElementById('your-last-guess');
-var randomNumber = null;
 var feedback = document.getElementById('feedback');
 
-// var randomNumber = parseInt(nextNum());
-function nextNum() {
-  return Math.floor(Math.random() * ((100 - 1) + 1));
-}
-// generate randomNumber
-window.onload = function() {
-    randomNumber = nextNum();
-}
-// guess button
+// EVENT LISTENERS
 guessButton.addEventListener('click', makeGuess);
+guessButton.addEventListener('click', generateRandomNumber);
+guessButton.addEventListener('click', resetButtonOn);
+guessButton.addEventListener('click', guessFeedback);
+guessButton.addEventListener('click', evaluateUserInput);
+clearButton.addEventListener('click', clear);
+guessInput.addEventListener('keyup', buttonOn);
+resetButton.addEventListener('click', restart);
+// userMin.addEventListener('keyup', enableUserRange)
+
+
+function nextNum() {
+  var min = parseInt(userMin.value);
+  var max = parseInt(userMax.value);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+  console.log(randomNumber);
+}
+
+window.onload = function(e) {
+  e.preventDefault();
+}
+
+// GENERATE RANDOM NUMBER
+function generateRandomNumber() {
+  var min = parseInt(userMin.value);
+  var max = parseInt(userMax.value);
+  if (!randomNumber) {
+    randomNumber = nextNum();
+    console.log(randomNumber)
+  }
+}
+
+// GUESS BUTTON
 function makeGuess() {
   var guess = parseInt(guessInput.value);
-  // do I want this to be a local or global variable?
   lastNumber.innerText = guess;
 }
-// reset button
-resetButton.addEventListener('click', restart);
+// RESET BUTTON
 function restart() {
 window.location.reload();
 }
-// clearButton
-clearButton.addEventListener('click', clear);
- function clear() {
-   guessInput.value = null;
+// CLEAR BUTTON
+function clear() {
+  guessInput.value = null;
 }
-// enable buttons
-guessInput.addEventListener('keyup', buttonOn);
+// ENABLE BUTTONS
 function buttonOn() {
-  document.getElementById('guess-button').removeAttribute('disabled');
-  document.getElementById('clear-button').removeAttribute('disabled');
+  guessButton.removeAttribute('disabled');
+  clearButton.removeAttribute('disabled');
 }
-guessButton.addEventListener('click', resetButtonOn);
 function resetButtonOn() {
-  document.getElementById('reset-button').removeAttribute('disabled');
+  resetButton.removeAttribute('disabled');
 }
 
-
-guessButton.addEventListener('click', guessFeedback);
+// EVALUATE GUESS
 function guessFeedback() {
   var guess = parseInt(guessInput.value);
-// do I want this to be a local or global variable (doesn't work when it's global)?
   lastGuess.innerText = "Your last guess was";
   if (guess > randomNumber) {
       feedback.innerText = 'That is too high';
@@ -63,57 +79,18 @@ function guessFeedback() {
       feedback.innerText = 'That is too low';
   } else if (guess === randomNumber) {
       feedback.innerText = 'BOOM!';
-  // } else
-  //   lastGuess.innerText = '';
-  //   feedback.innerText = '...please enter a number';
+  } else {
+    lastGuess.innerText = '';
+    feedback.innerText = '...please enter a number';
   }
 }
-// user submits inappropriate value
-guessButton.addEventListener('click', evaluateUserInput);
+// EVALUATE INITIAL INPUT
 function evaluateUserInput() {
+  var min = parseInt(userMin.value);
+  var max = parseInt(userMax.value);
   var guess = parseInt(guessInput.value);
-  if (guess < numLow || guess > numHigh) {
+  if (guess < min || guess > max) {
     lastGuess.innerText = 'whoops...';
-    feedback.innerText = 'Choose a number between ' + numLow + ' and ' + numHigh + ' .';
-    console.log('hello');
+    feedback.innerText = 'Choose a number between ' + min + ' and ' + max + ' .';
  }
 }
-
-
-
-
-// go back and look at input and changing to buttons
-
-// or
-// var randomNumber = parseInt(nextNum());
-// function nextNum() {
-//   return Math.floor(Math.random() * ((numHigh - numLow) + numLow));
-// }
-
-// user submits a guess and gets feedback
-
-
-
-
-
-
-
-// user makes guess in proper range of numbers
-// user given feedback ("That is too high")
-// user guesses again
-// user given feedback ("That is too low")
-// user guesses again
-// user given feedback ("BOOM!")
-    // guessButton should be disabled when guessInput is empty
-    // clearButton should be disabled when guessInput is empty
-    // resetButton should be diabled until after guessButton is clicked
-// (e.g. parseInt() returns NaN)????
-
-// ADD TO NOTES
-    // event.preventDefault()
-    // input = value
-    // innertext = regular tags (not form elements)
-    // what is querySelector?
-    // sign-up for pairing sessions
-    // if console.log prints--something is wrong with the actual function
-    // if console.log doesn't print--something is wrong with the code block
