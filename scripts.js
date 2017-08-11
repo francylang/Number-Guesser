@@ -9,6 +9,7 @@ var randomNumber;
 var userMin = document.getElementById('user-min');
 var userMax = document.getElementById('user-max');
 var lastGuess = document.getElementById('your-last-guess');
+var lastNumber = document.getElementById('last-number');
 var feedback = document.getElementById('feedback');
 
 // EVENT LISTENERS
@@ -45,7 +46,6 @@ function generateRandomNumber() {
 // GUESS BUTTON
 function makeGuess() {
   var guess = parseInt(guessInput.value);
-  var lastNumber = document.getElementById('last-number');
   lastNumber.innerText = guess;
 }
 
@@ -92,7 +92,7 @@ function guessFeedback() {
   } else if (guess < randomNumber) {
       feedback.innerText = 'That is too low';
   } else if (guess === randomNumber) {
-      boom.innerText = 'BOOM!';
+      lastNumber.innerText = 'BOOM!';
       correctGuess()
       adjustMinMax()
  }
