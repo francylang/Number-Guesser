@@ -92,6 +92,13 @@ h1 {
   margin-top: 0;
 }
 
+#user-min:disabled,
+#user-max:disabled {
+  background-color: #929497;
+  color: #E6E7E8;
+
+}
+
 .button {
   color: #FFFFFF;
   background-color: #929497;
@@ -140,6 +147,12 @@ h2 {
 #last-number {
   color: #EB008B;
   font-size: 150px;
+}
+
+#boom {
+  color: #EB008B;
+  font-size: 50px;
+
 }
 
 #feedback {
